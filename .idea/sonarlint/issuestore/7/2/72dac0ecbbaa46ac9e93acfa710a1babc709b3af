@@ -1,0 +1,10 @@
+
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(î˜Á8³’ÙÍ¿1
+p
+java:S3776†"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(±ğ•¦8ğ’ÙÍ¿1
+[
+java:S1854œ"8Remove this useless assignment to local variable "temp".(Éêàüÿÿÿÿ8ğ’ÙÍ¿1
+^
+java:S1854¶";Remove this useless assignment to local variable "balance".(ìıŒÏûÿÿÿÿ8ğ’ÙÍ¿1
+O
+java:S1481¶",Remove this unused "balance" local variable.(ìıŒÏûÿÿÿÿ8€“ÙÍ¿1
