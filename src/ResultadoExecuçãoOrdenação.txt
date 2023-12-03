@@ -1,5 +1,3 @@
-* Não é esse que está ordenado em ordem crescente
-
 Nome do Aluno: Arthur Paganoti
 Nome do algoritmo: Ávore AVL ÁrvoreAVL Ordenação
 Tempo de execução: 00:00:00:050

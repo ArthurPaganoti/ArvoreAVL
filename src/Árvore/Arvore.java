@@ -1,4 +1,4 @@
-package ÁrvoreAVL;
+package Árvore;
 
 import java.util.ArrayList;
 
@@ -69,23 +69,47 @@ public class Arvore {
 
     // Método para realizar uma rotação à esquerda
     Arvore rotacaoLL(Arvore raiz) {
+        if (raiz == null || raiz.esquerda == null) {
+            return raiz;
+        }
+
         Arvore no = raiz.esquerda;
+        if (no == null) {
+            return raiz;
+        }
+
         raiz.esquerda = no.direita;
-        no.direita = raiz;
+        if (no.direita != null) {
+            no.direita = raiz;
+        }
+
         raiz.altura = maior(alturaNo(raiz.esquerda), alturaNo(raiz.direita)) + 1;
         no.altura = maior(alturaNo(no.esquerda), raiz.altura) + 1;
         return no;
     }
 
+
     // Método para realizar uma rotação à direita
     Arvore rotacaoRR(Arvore raiz) {
+        if (raiz == null || raiz.direita == null) {
+            return raiz;
+        }
+
         Arvore no = raiz.direita;
+        if (no == null) {
+            return raiz;
+        }
+
         raiz.direita = no.esquerda;
-        no.esquerda = raiz;
+        if (no.esquerda != null) {
+            no.esquerda = raiz;
+        }
+
         raiz.altura = maior(alturaNo(raiz.esquerda), alturaNo(raiz.direita)) + 1;
         no.altura = maior(alturaNo(no.direita), raiz.altura) + 1;
         return no;
     }
+
 
     // Método para realizar uma rotação à esquerda e depois à direita
     Arvore rotacaoLR(Arvore raiz) {
@@ -143,9 +167,7 @@ public class Arvore {
         return balancear(raiz, valor);
     }
 
-    // Método para remover um valor da árvore
     Arvore remover(Arvore raiz, int valor) {
-        // 1. Realiza a remoção padrão de BST
         if (raiz == null) {
             return raiz;
         }
@@ -156,7 +178,7 @@ public class Arvore {
             raiz.direita = remover(raiz.direita, valor);
         } else {
             // Nó com apenas um filho ou sem filhos
-            if ((raiz.esquerda == null) || (raiz.direita == null)) {
+            if (raiz.esquerda == null || raiz.direita == null) {
                 Arvore temp = null;
                 if (temp == raiz.esquerda) {
                     temp = raiz.direita;
@@ -198,17 +220,34 @@ public class Arvore {
         return balancear(raiz, valor);
     }
 
-    // Método para encontrar o nó com o menor valor
-    Arvore minValueNode(Arvore node) {
-        Arvore current = node;
 
-        /* loop down to find the leftmost leaf */
-        while (current.esquerda != null) {
-            current = current.esquerda;
+    Arvore maxValueNode(Arvore node) {
+        if (node == null) {
+            return null;
         }
 
-        return current;
+        /* loop up to find the rightmost leaf */
+        while (node.esquerda != null) {
+            node = node.esquerda;
+        }
+
+        return node;
     }
+
+
+    Arvore minValueNode(Arvore node) {
+        if (node == null) {
+            return null;
+        }
+
+        /* loop down to find the leftmost leaf */
+        while (node.direita != null) {
+            node = node.direita;
+        }
+
+        return node;
+    }
+
 
     // Método para gerar um arquivo com a árvore em ordem e o tempo de execução
     void gerarArquivoOrdenacao(String nomeArquivo) {
@@ -242,4 +281,19 @@ public class Arvore {
             imprimirEmOrdem(node.direita, valores);
         }
     }
+
+    // Método para contar o número de ocorrências de um valor na árvore
+    public int contar(Arvore no, int valor) {
+        if (no == null) {
+            return 0;
+        }
+
+        int count = 0;
+        if (no.valor == valor) {
+            count = 1;
+        }
+
+        return count + contar(no.esquerda, valor) + contar(no.direita, valor);
+    }
+
 }
