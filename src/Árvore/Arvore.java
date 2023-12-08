@@ -249,6 +249,16 @@ public class Arvore {
     }
 
 
+    // Método para gerar uma lista com a árvore em ordem
+    public ArrayList<Integer> gerarArquivoEmOrdem(Arvore no, ArrayList<Integer> valores) {
+        if (no != null) {
+            gerarArquivoEmOrdem(no.esquerda, valores);
+            valores.add(no.valor);
+            gerarArquivoEmOrdem(no.direita, valores);
+        }
+        return valores;
+    }
+
     // Método para gerar um arquivo com a árvore em ordem e o tempo de execução
     void gerarArquivoOrdenacao(String nomeArquivo) {
         ArrayList<Integer> valores = new ArrayList<>();
@@ -261,16 +271,6 @@ public class Arvore {
 
         // Passa o tempo total para o método gravarArquivo
         Arquivo.gravarArquivo(nomeArquivo, conteudo, "Árvore AVL", tempoTotal, 0, 0);
-    }
-
-    // Método para gerar um ArrayList com a árvore em ordem
-    ArrayList<Integer> gerarArquivoEmOrdem(Arvore node, ArrayList<Integer> valores) {
-        if (node != null) {
-            gerarArquivoEmOrdem(node.esquerda, valores);
-            valores.add(node.valor);
-            gerarArquivoEmOrdem(node.direita, valores);
-        }
-        return valores;
     }
 
     // Método para imprimir a árvore em ordem
