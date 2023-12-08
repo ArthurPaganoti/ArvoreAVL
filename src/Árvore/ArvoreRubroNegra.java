@@ -3,6 +3,7 @@ package Árvore;
 public class ArvoreRubroNegra {
     private static final boolean RED = true;
     private static final boolean BLACK = false;
+    private Node raiz;
 
     private class Node {
         int key;
@@ -240,5 +241,17 @@ public class ArvoreRubroNegra {
             flipColors(h);
         }
         return h;
+    }
+
+    public void inserirPublico(int valor) {
+        inserir(this.raiz, valor);
+    }
+
+    public void removerPublico(int valor) {
+        remover(this.raiz, valor);
+    }
+
+    public int contarPublico(int valor) {
+        return contar(valor);
     }
 }

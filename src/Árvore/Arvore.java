@@ -296,4 +296,16 @@ public class Arvore {
         return count + contar(no.esquerda, valor) + contar(no.direita, valor);
     }
 
+
+    public void inserirPublico(int valor) {
+        inserir(this, valor);
+    }
+
+    public void removerPublico(int valor) {
+        remover(this, valor);
+    }
+
+    public int contarPublico(int valor) {
+        return contar(this, valor);
+    }
 }
