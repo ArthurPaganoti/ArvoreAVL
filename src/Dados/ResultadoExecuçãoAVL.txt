@@ -1,6 +1,6 @@
 Nome do Aluno: Arthur Paganoti
 Nome do algoritmo: Ávore AVL ÁrvoreAVL Ordenação
-Tempo de execução: 00:00:00:048
+Tempo de execução: 00:00:00:066
 Quantidade de Comparações: 0
 Quantidade de Movimentos: 0
 

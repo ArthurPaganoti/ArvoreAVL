@@ -244,7 +244,7 @@ public class ArvoreRubroNegra {
     }
 
     public void inserirPublico(int valor) {
-        inserir(this.raiz, valor);
+        this.raiz = inserir(this.raiz, valor);
     }
 
     public void removerPublico(int valor) {

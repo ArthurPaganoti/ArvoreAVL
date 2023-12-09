@@ -1,8 +1,26 @@
 package Árvore;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
 
 public class App {
+    public static void escreverDadosEmArquivo(int[] vetor, String nomeArquivo) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo));
+
+            for (int valor : vetor) {
+                writer.write(String.valueOf(valor));
+                writer.newLine();  // quebra de linha
+            }
+
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         long tempoInicioTotal = System.nanoTime();
 
@@ -13,21 +31,23 @@ public class App {
 
         // Inserir os valores do arquivo na árvore Rubro-Negra
         long tempoInicioRN = System.nanoTime();
-        for (int value : vetor) {
-            arvoreRN.inserirPublico(value);
+        for (int valor : vetor) {
+            arvoreRN.inserirPublico(valor);
         }
         long tempoFimRN = System.nanoTime();
         double tempoInsercaoRN = (tempoFimRN - tempoInicioRN) / 1_000_000_000.0;
         System.out.println("Tempo de preenchimento da árvore Rubro-Negra: " + tempoInsercaoRN + " segundos");
+        escreverDadosEmArquivo(vetor, "C:\\Users\\pagan\\OneDrive\\Área de Trabalho\\IF BCC\\Atividades Programação BCC\\ArvoreAVL\\src\\Dados\\rubronegro.txt");
 
         // Inserir os valores do arquivo na árvore AVL
         long tempoInicioAVL = System.nanoTime();
-        for (int value : vetor) {
-            arvoreAVL.inserirPublico(value);
+        for (int valor : vetor) {
+            arvoreAVL.inserirPublico(valor);
         }
         long tempoFimAVL = System.nanoTime();
         double tempoInsercaoAVL = (tempoFimAVL - tempoInicioAVL) / 1_000_000_000.0;
         System.out.println("Tempo de preenchimento da árvore AVL: " + tempoInsercaoAVL + " segundos");
+        escreverDadosEmArquivo(vetor, "C:\\Users\\pagan\\OneDrive\\Área de Trabalho\\IF BCC\\Atividades Programação BCC\\ArvoreAVL\\src\\Dados\\avl.txt");
 
         // Gerar o arquivo de ordenação da árvore AVL
         arvoreAVL.gerarArquivoOrdenacao("Ordenação_AVL");
